@@ -42,7 +42,7 @@ Portfolio project built as a complete React Native application using Expo.
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/momento.git
+git clone https://github.com/conor-clyde/momento.git
 cd momento
 ```
 
