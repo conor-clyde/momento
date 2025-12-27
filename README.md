@@ -3,7 +3,7 @@
 Momento is a mobile app for capturing and reflecting on meaningful moments - big or small - using photos, mood tracking, and short notes. It is designed to encourage mindfulness and appreciation without the false pressure to "go big" on moments.
 Portfolio project built as a complete React Native application using Expo.
 
-![Momento App](assets/images/icon.png)
+<img src="assets/images/icon.png" alt="Momento App" width="120" />
 
 ## ✨ Features
 
