@@ -1,8 +1,7 @@
 # 📸 Momento
 
 Momento is a mobile app for capturing and reflecting on meaningful moments - big or small - using photos, mood tracking, and short notes. It is designed to encourage mindfulness and appreciation without the false pressure to "go big" on moments.
-
-Built as a complete React Native project using Expo.
+Portfolio project built as a complete React Native application using Expo.
 
 ![Momento App](assets/images/icon.png)
 
@@ -12,9 +11,9 @@ Built as a complete React Native project using Expo.
 - Attach moods and reflective notes
 - Browse moments in a scrollable gallery
 - Clean and intuitive UI design
-- Streaks to build mindful habits
+- Daily streaks to build mindful habits
 - Statistics for further reflection
-- Achievements that encourages consistency 
+- Achievements that encourage consistency 
 
 ## 📱 Screens
 
@@ -74,10 +73,7 @@ npm start
 
 ## 🎯 App Philosophy
 
-Momento is built on the belief that life doesn't need to be extraordinary to be meaningful. Momento encourages users to notice and reflect on everyday moments that quietly shape their lives - whether joyful, neutral, or difficult.
-
-There is no pressure to be positive, impressive or consisent, just present.
-Momento is a reminder that life is built from small moments, noticed.
+Momento is built on the belief that life doesn't need to be extraordinary to be meaningful, encouraging users to notice and reflect on everyday moments that quietly shape their lives—whether joyful, neutral, or difficult—as a reminder that life is built from small moments, noticed.
 
 ## 📂 Project Structure
 
@@ -111,11 +107,6 @@ src/
 - Improved accessibility and animations
 - Improved statistics and achivements
 
-## 🤝 Contributing
-
-This is a portfolio project created to showcase mobile and full-stack development skills.
-Contributions are welcome via forks and pull requests.
-
 ## 📄 License
 
 This project is licensed under the MIT License.
@@ -124,8 +115,6 @@ This project is licensed under the MIT License.
 
 Conor Clyde
 - LinkedIn: linkedin.com/in/conorclyde/
-- Email: clydeconor@gmail.com
-
-⸻
+- Email: clydeconor@gmail.coms
 
 Built with ❤️ using React Native and Expo

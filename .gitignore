@@ -33,11 +33,38 @@ yarn-error.*
 # local env files
 .env*.local
 
+# Android local properties (contains SDK path - needed for building)
+# Uncomment the line below if you want to commit local.properties
+# !android/local.properties
+
 # typescript
 *.tsbuildinfo
+*.tsbuildinfo
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
 
 app-example
 
-# generated native folders
-/ios
-/android
+# generated native build outputs
+android/app/build/
+android/build/
+ios/build/
