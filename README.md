@@ -115,6 +115,6 @@ This project is licensed under the MIT License.
 
 Conor Clyde
 - LinkedIn: linkedin.com/in/conorclyde/
-- Email: clydeconor@gmail.coms
+- Email: clydeconor@gmail.com
 
 Built with ❤️ using React Native and Expo
