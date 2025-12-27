@@ -77,6 +77,7 @@ Momento is built on the belief that life doesn't need to be extraordinary to be 
 
 ## 📂 Project Structure
 
+```text
 src/
 ├── app/                 # App screens (Expo Router)
 │   ├── (tabs)/          # Main tab navigation
@@ -91,6 +92,7 @@ src/
 ├── contexts/            # React Context providers
 ├── types/               # TypeScript type definitions
 └── utils/               # Utility functions
+```
 
 ## 📚 What I Learned
 - Building a multi-screen mobile app with Expo Router
