@@ -1,18 +1,30 @@
 # 📸 Momento
 
-A beautiful, thoughtful mood tracking and journaling app that helps you capture and reflect on your little moments. Built with React Native and Expo.
+Momento is a mobile app for capturing and reflecting on meaningful moments - big or small - using photos, mood tracking, and short notes. It is designed to encourage mindfulness and appreciation without the false pressure to "go big" on moments.
+
+Built as a complete React Native project using Expo.
 
 ![Momento App](assets/images/icon.png)
 
 ## ✨ Features
 
-- **📷 Photo Capture**: Capture photos directly in-app to document your moments
-- **😊 Mood Tracking**: Track your emotional state with 18 carefully selected mood options
-- **📝 Journaling**: Add notes and reflections to your captured moments
-- **🏆 Achievement System**: Unlock achievements based on streaks, milestones, and habits
-- **📊 Statistics**: View insights about your mood patterns and journaling habits
-- **📅 Daily Streaks**: Build consistency with daily moment capture tracking
-- **🎨 Beautiful UI**: Clean, intuitive design with smooth animations
+- Capture moments using the device camera
+- Attach moods and reflective notes
+- Browse moments in a scrollable gallery
+- Clean and intuitive UI design
+- Streaks to build mindful habits
+- Statistics for further reflection
+- Achievements that encourages consistency 
+
+## 📱 Screens
+
+- Home
+- Gallery
+- Camera
+- Add Moment Details
+- View / Edit Moment
+- Statistics
+- Achievements
 
 ## 🚀 Tech Stack
 
@@ -20,99 +32,100 @@ A beautiful, thoughtful mood tracking and journaling app that helps you capture 
 - **Language**: TypeScript
 - **Navigation**: Expo Router (file-based routing)
 - **State Management**: React Context
-- **Storage**: AsyncStorage for local data persistence
-- **Camera**: Expo Camera for photo capture
-- **Styling**: Custom theme system with responsive design
+- **Storage**: AsyncStorage (local persistence)
+- **Camera**: Expo Camera
+- **Styling**: Structured custom styling
 - **Icons**: Expo Vector Icons & Symbols
 
 ## 🛠️ Installation & Setup
 
+### Quick Start (Using Expo Go)
+
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/momento.git
-   cd momento
-   ```
+```bash
+git clone https://github.com/yourusername/momento.git
+cd momento
+```
 
 2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Start the development server**
-   ```bash
-   npm start
-   ```
+3. **Install Expo Go on your device**
+- **iOS**: Download from [App Store](https://apps.apple.com/app/expo-go/id982107779)
+- **Android**: Download from [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
-4. **Run on your device**
-   - For iOS: `npm run ios`
-   - For Android: `npm run android`
-   - For Web: `npm run web`
+4. **Start the development server**
+```bash
+npm start
+```
+
+5. **Run on your device**
+- After the server starts, scan the QR code with Expo Go on your phone
 
 ## 📱 Usage
-
-1. **Capture a Moment**: Tap the camera button to take a photo
-2. **Add Your Mood**: Select from 18 mood options that reflect your current state
-3. **Write Your Thoughts**: Add optional notes about your moment
-4. **View Your Gallery**: Browse all your captured moments in the gallery tab
-5. **Track Progress**: Check your statistics and unlock achievements
-6. **Build Streaks**: Try to capture moments daily to maintain your streak
+1.	Capture a moment using the camera
+2.	Select a mood (optional)
+3.	Add notes to reflect on the moment (optional)
+4.	Browse moments in the gallery
+5.	Track statistics and unlock achievements
+6.	Build streaks through daily reflection
 
 ## 🎯 App Philosophy
 
-Momento believes that every moment, no matter how small, deserves to be captured and remembered. Whether it's a joyful celebration, a quiet moment of reflection, or even difficult emotions that need processing - all experiences shape who we are.
+Momento is built on the belief that life doesn't need to be extraordinary to be meaningful. Momento encourages users to notice and reflect on everyday moments that quietly shape their lives - whether joyful, neutral, or difficult.
 
-The app focuses on:
-- **Accessibility**: Simple, intuitive interface accessible to everyone
-- **Privacy**: All data stays on your device
-- **Mindfulness**: Encouraging regular reflection and self-awareness
-- **Positivity**: Celebrating both positive and challenging moments equally
+There is no pressure to be positive, impressive or consisent, just present.
+Momento is a reminder that life is built from small moments, noticed.
 
 ## 📂 Project Structure
 
-```
 src/
-├── app/                 # App screens (using Expo Router)
-│   ├── (tabs)/         # Main tab navigation
-│   ├── camera.tsx      # Camera screen
-│   ├── add.tsx         # Add moment screen
+├── app/                 # App screens (Expo Router)
+│   ├── (tabs)/          # Main tab navigation
+│   ├── camera.tsx       # Camera screen
+│   ├── add.tsx          # Add moment screen
 │   └── achievements.tsx # Achievements screen
-├── components/         # Reusable UI components
-│   ├── ui/            # Basic UI components
-│   ├── forms/         # Form components
-│   └── layout/        # Layout components
-├── constants/         # App constants and data
-├── contexts/          # React contexts for state management
-├── types/            # TypeScript type definitions
-└── utils/            # Utility functions
-```
+├── components/          # Reusable UI components
+│   ├── ui/              # Base UI components
+│   ├── forms/           # Form components
+│   └── layout/          # Layout components
+├── constants/           # App constants and data
+├── contexts/            # React Context providers
+├── types/               # TypeScript type definitions
+└── utils/               # Utility functions
 
-## 🔧 Development
+## 📚 What I Learned
+- Building a multi-screen mobile app with Expo Router
+- Managing shared state with React Context
+- Working with device features such as the camera
+- Designing a scalable React Native project structure
+- Writing reusable and maintainable TypeScript components
+- Balancing technical features with thoughtful UX design
 
-- **Linting**: ESLint with Expo configuration
-- **TypeScript**: Full TypeScript support
-- **Hot Reload**: Live development with Expo Dev Client
-- **Cross-platform**: iOS, Android, and Web support
+## 🔮 Future Improvements
+- Haptic feedback, touch gestures
+- Authentication and moment backup
+- Friending and sharing between users on different accounts
+- Improved accessibility and animations
+- Improved statistics and achivements
 
 ## 🤝 Contributing
 
-This is a portfolio project created to showcase mobile development skills. While it's primarily a demonstration project, feel free to:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your improvements
-4. Submit a pull request
+This is a portfolio project created to showcase mobile and full-stack development skills.
+Contributions are welcome via forks and pull requests.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Conor Clyde**
-- Portfolio: [Your Portfolio Website]
-- LinkedIn: [Your LinkedIn]
-- Email: [Your Email]
+Conor Clyde
+- LinkedIn: linkedin.com/in/conorclyde/
+- Email: clydeconor@gmail.com
 
----
+⸻
 
-*Built with ❤️ using React Native and Expo*
+Built with ❤️ using React Native and Expo

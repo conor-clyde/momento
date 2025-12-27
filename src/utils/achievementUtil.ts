@@ -42,21 +42,21 @@ function evaluateAchievement(def: AchievementDefinition, data: MomentData): Achi
     };
   }
 
-  // Holiday achievements - isHoliday() now returns achievement ID directly
+  // Holiday achievements 
   if (id.startsWith("holiday-")) {
-    const moment = data.holidayMoments[id];
-    return { ...def, unlocked: !!moment, unlockedAt: moment?.createdAt };
+    const unlockDate = data.holidayMoments[id];
+    return { ...def, unlocked: !!unlockDate, unlockedAt: unlockDate };
   }
 
-  // Time achievements - IDs now match data keys directly (e.g., "time-earlyBird")
+  // Time achievements 
   if (id.startsWith("time-")) {
     // Remove "time-" prefix to get the key (e.g., "time-earlyBird" → "earlyBird")
     const timeKey = id.slice(5);
-    const moment = data.timeMoments[timeKey];
-    return { ...def, unlocked: !!moment, unlockedAt: moment?.createdAt };
+    const unlockDate = data.timeMoments[timeKey];
+    return { ...def, unlocked: !!unlockDate, unlockedAt: unlockDate };
   }
 
-  // Content achievements - check counts like photos, favorites, notes, etc.
+  // Content achievements 
   if (id.startsWith("content-")) {
     // Special case: first moment achievement
     if (id === "content-first") {
@@ -99,30 +99,21 @@ function evaluateAchievement(def: AchievementDefinition, data: MomentData): Achi
 export function calculateAchievements(
   moments: Moment[],
   unlockedIds?: Set<string>,
-  unlockedDates?: Map<string, Date>,
   momentData?: MomentData
 ): Achievement[] {
   // Use provided momentData or calculate it if not provided
   const data = momentData || calculateMomentData(moments);
-  
+
   // Return achievements in the order they're defined (which follows category order)
   // CRITICAL: Once an achievement is unlocked, it stays unlocked forever
   // Even if the user no longer meets requirements or deletes photos
   return ALL_ACHIEVEMENT_DEFINITIONS.map(def => {
-    // If already unlocked, ALWAYS preserve it - never re-evaluate
-    // This ensures achievements persist even when moments are deleted
-    // This check MUST happen before evaluateAchievement to prevent re-locking
-    if (unlockedIds && unlockedIds.has(def.id)) {
-      const unlockedAt = unlockedDates?.get(def.id);
-      // Double-check: ensure we always return unlocked: true for achievements in the Set
-      return { ...def, unlocked: true, unlockedAt };
+    // Check persistence first - if already unlocked, return unlocked status only
+    if (unlockedIds?.has(def.id)) {
+      return { ...def, unlocked: true };
     }
-    // Otherwise, check if it should be unlocked now
-    const evaluated = evaluateAchievement(def, data);
-    // Safety check: if somehow an achievement was unlocked but not in the Set,
-    // we still mark it as unlocked (defensive programming)
-    // But this shouldn't happen if the Set is properly maintained
-    return evaluated;
+    // Only evaluate if not previously unlocked
+    return evaluateAchievement(def, data);
   });
 }
 

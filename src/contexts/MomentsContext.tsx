@@ -55,7 +55,6 @@ const deserializeMoment = (serialized: SerializedMoment): Moment => {
 export function MomentsProvider({ children }: { children: ReactNode }) {
   const [moments, setMoments] = useState<Moment[]>([]);
   const [unlockedAchievementIds, setUnlockedAchievementIds] = useState<Set<string>>(new Set());
-  const [unlockedAchievementDates, setUnlockedAchievementDates] = useState<Map<string, Date>>(new Map());
   const [isLoading, setIsLoading] = useState(true);
   const momentsRef = useRef<Moment[]>([]);
 
@@ -90,9 +89,9 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
   // Save unlocked achievements whenever they change (but not on initial load)
   useEffect(() => {
     if (!isLoading) {
-      saveUnlockedAchievements(unlockedAchievementIds, unlockedAchievementDates);
+      saveUnlockedAchievements(unlockedAchievementIds);
     }
-  }, [unlockedAchievementIds, unlockedAchievementDates, isLoading]);
+  }, [unlockedAchievementIds, isLoading]);
 
   const loadMoments = async () => {
     try {
@@ -145,28 +144,15 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
-          // Support both old format (array of strings) and new format (object with ids and dates)
+          // Support both old format (array of strings) and new format (object with ids)
           if (Array.isArray(parsed)) {
             // Old format - migrate to new format
             logger.log(`[Achievements] Loading ${parsed.length} unlocked achievements (old format)`);
             setUnlockedAchievementIds(new Set(parsed));
-            setUnlockedAchievementDates(new Map());
           } else if (parsed.ids && Array.isArray(parsed.ids)) {
             // New format
-            logger.log(`[Achievements] Loading ${parsed.ids.length} unlocked achievements (new format):`, parsed.ids);
+            logger.log(`[Achievements] Loading ${parsed.ids.length} unlocked achievements:`, parsed.ids);
             setUnlockedAchievementIds(new Set(parsed.ids));
-            const datesMap = new Map<string, Date>();
-            if (parsed.dates && typeof parsed.dates === 'object') {
-              Object.entries(parsed.dates).forEach(([id, dateStr]) => {
-                if (typeof dateStr === 'string') {
-                  const date = new Date(dateStr);
-                  if (isValidDate(date)) {
-                    datesMap.set(id, date);
-                  }
-                }
-              });
-            }
-            setUnlockedAchievementDates(datesMap);
           }
         } catch (parseError) {
           console.error("Error parsing stored achievements:", parseError);
@@ -183,17 +169,10 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const saveUnlockedAchievements = async (unlockedIds: Set<string>, unlockedDates: Map<string, Date>) => {
+  const saveUnlockedAchievements = async (unlockedIds: Set<string>) => {
     try {
-      const datesObj: Record<string, string> = {};
-      unlockedDates.forEach((date, id) => {
-        datesObj[id] = date.toISOString();
-      });
-      const data = {
-        ids: Array.from(unlockedIds),
-        dates: datesObj,
-      };
-      logger.log(`[Achievements] Saving ${unlockedIds.size} unlocked achievements:`, Array.from(unlockedIds));
+      const data = Array.from(unlockedIds);
+      logger.log(`[Achievements] Saving ${unlockedIds.size} unlocked achievements:`, data);
       await AsyncStorage.setItem(ACHIEVEMENTS_STORAGE_KEY, JSON.stringify(data));
     } catch (error) {
       console.error("Error saving achievements:", error);
@@ -273,15 +252,15 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
   }, [moments, momentData]);
 
   // Calculate achievements - uses shared momentData to avoid redundant calculation
-  // CRITICAL: Always pass unlockedAchievementIds and unlockedAchievementDates to preserve unlocked achievements
+  // CRITICAL: Always pass unlockedAchievementIds to preserve unlocked achievements
   // Even if moments are deleted, unlocked achievements must remain unlocked
   const achievements = useMemo(() => {
     // Log when calculating achievements to help debug
     if (unlockedAchievementIds.size > 0) {
       logger.log(`[Achievements] Calculating with ${unlockedAchievementIds.size} preserved unlocked achievements`);
     }
-    return calculateAchievements(moments, unlockedAchievementIds, unlockedAchievementDates, momentData);
-  }, [moments, unlockedAchievementIds, unlockedAchievementDates, momentData]);
+    return calculateAchievements(moments, unlockedAchievementIds, momentData);
+  }, [moments, unlockedAchievementIds, momentData]);
 
   // Track newly unlocked achievements
   // CRITICAL: Only ADD to the Set, never remove - once unlocked, achievements stay unlocked forever
@@ -289,7 +268,7 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
     if (!isLoading) {
       const newlyUnlocked = achievements
         .filter(a => a.unlocked && !unlockedAchievementIds.has(a.id));
-      
+
       if (newlyUnlocked.length > 0) {
         logger.log(`[Achievements] ${newlyUnlocked.length} new achievements unlocked:`, newlyUnlocked.map(a => a.id));
         setUnlockedAchievementIds(prev => {
@@ -299,25 +278,15 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
           logger.log(`[Achievements] Updated unlocked set: ${updated.size} total (added ${newlyUnlocked.length})`);
           return updated;
         });
-        setUnlockedAchievementDates(prev => {
-          // Always preserve existing dates - only add new ones
-          const updated = new Map(prev);
-          newlyUnlocked.forEach(a => {
-            if (a.unlockedAt) {
-              updated.set(a.id, a.unlockedAt);
-            }
-          });
-          return updated;
-        });
       }
-      
+
       // Defensive check: ensure all achievements marked as unlocked in the Set are actually unlocked
       // This helps catch any bugs where achievements might be incorrectly marked as locked
       const shouldBeUnlocked = Array.from(unlockedAchievementIds).filter(id => {
         const achievement = achievements.find(a => a.id === id);
         return achievement && !achievement.unlocked;
       });
-      
+
       if (shouldBeUnlocked.length > 0) {
         logger.warn(`[Achievements] WARNING: ${shouldBeUnlocked.length} achievements in Set but marked as locked:`, shouldBeUnlocked);
         logger.warn(`[Achievements] This should never happen - achievements in Set should always be unlocked`);

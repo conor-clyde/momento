@@ -28,8 +28,8 @@ export interface MomentData {
   moodCounts: Record<string, number>;
   uniqueMoodsSet: Set<string>;
   positiveMoodMoments: Moment[];
-  holidayMoments: Record<string, Moment>;
-  timeMoments: Record<string, Moment>;
+  holidayMoments: Record<string, Date>;
+  timeMoments: Record<string, Date>;
   getSortedMoments: () => Moment[];
 }
 
@@ -82,8 +82,8 @@ export function calculateMomentData(moments: Moment[]): MomentData {
   const uniqueMoods = new Set<string>();
   const moodCounts: Record<string, number> = {};
   const positiveMoodMoments: Moment[] = [];
-  const holidayMoments: Record<string, Moment> = {};
-  const timeMoments: Record<string, Moment> = {};
+  const holidayMoments: Record<string, Date> = {};
+  const timeMoments: Record<string, Date> = {};
   let hasPositive = false, hasNeutral = false, hasNegative = false;
 
   // Single pass through moments - calculate everything at once
@@ -114,17 +114,17 @@ export function calculateMomentData(moments: Moment[]): MomentData {
 
     // Holiday tracking
     const holiday = isHoliday(m.createdAt);
-    if (holiday && !holidayMoments[holiday]) holidayMoments[holiday] = m;
+    if (holiday && !holidayMoments[holiday]) holidayMoments[holiday] = m.createdAt;
 
     // Time-based tracking
     const h = m.createdAt.getHours();
     const day = m.createdAt.getDay();
     const min = m.createdAt.getMinutes();
-    if (!timeMoments.earlyBird && h >= 5 && h < 9) timeMoments.earlyBird = m;
-    if (!timeMoments.nightOwl && (h >= 22 || h < 2)) timeMoments.nightOwl = m;
-    if (!timeMoments.weekend && (day === 0 || day === 6)) timeMoments.weekend = m;
-    if (!timeMoments.midnight && h === 0 && min === 0) timeMoments.midnight = m;
-    if (!timeMoments.noon && h === 12 && min === 0) timeMoments.noon = m;
+    if (!timeMoments.earlyBird && h >= 5 && h < 9) timeMoments.earlyBird = m.createdAt;
+    if (!timeMoments.nightOwl && (h >= 22 || h < 2)) timeMoments.nightOwl = m.createdAt;
+    if (!timeMoments.weekend && (day === 0 || day === 6)) timeMoments.weekend = m.createdAt;
+    if (!timeMoments.midnight && h === 0 && min === 0) timeMoments.midnight = m.createdAt;
+    if (!timeMoments.noon && h === 12 && min === 0) timeMoments.noon = m.createdAt;
   }
 
   // Calculate streaks efficiently - single calculation, reused

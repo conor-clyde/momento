@@ -10,8 +10,9 @@ import { colors, shadows, spacing, typography } from "@/src/constants/theme";
 import { useMoments } from "@/src/contexts/MomentsContext";
 import { formatDateTime, savePhotoToCameraRoll } from "@/src/utils";
 import { router, useLocalSearchParams } from "expo-router";
+import * as Sharing from "expo-sharing";
 import { useState } from "react";
-import { Alert, Dimensions, Image, Modal, Pressable, ScrollView, Share, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Alert, Dimensions, Image, Modal, Pressable, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
@@ -85,19 +86,15 @@ export default function MomentDetailScreen() {
 
   const handleShare = async () => {
     try {
-      const message = moment.title?.trim()
-        ? `${moment.title}\n\n${moment.notes?.trim() || ''}`
-        : moment.notes?.trim() || 'A special moment from Momento';
-
       if (moment.imageUri) {
-        await Share.share({
-          message,
-          url: moment.imageUri,
-        });
+        const isAvailable = await Sharing.isAvailableAsync();
+        if (!isAvailable) {
+          Alert.alert("Sharing not available", "Sharing is not available on this device.");
+          return;
+        }
+        await Sharing.shareAsync(moment.imageUri);
       } else {
-        await Share.share({
-          message: `${message}\n\nCaptured on ${fullDateTime}`,
-        });
+        Alert.alert("No photo to share", "This moment doesn't have a photo to share.");
       }
     } catch (error) {
       console.error("Error sharing moment:", error);
@@ -116,31 +113,29 @@ export default function MomentDetailScreen() {
         >
         {/* --- Combined Header and Image Section with Background --- */}
         <View style={styles.headerImageContainer}>
-          {/* Header with Favorite in Top Right */}
-          <View style={styles.headerWithFavorite}>
-            <View style={styles.headerContent}>
-              {moment.title?.trim() ? (
-                <Text style={styles.title}>{moment.title}</Text>
-              ) : (
-                <Text style={styles.titlePlaceholder}>Untitled Moment</Text>
-              )}
+          {/* Header with Title, Date and Favorite */}
+          <View style={styles.headerContent}>
+            {moment.title?.trim() ? (
+              <Text style={styles.title}>{moment.title}</Text>
+            ) : (
+              <Text style={styles.titlePlaceholder}>Untitled Moment</Text>
+            )}
 
-              <View style={styles.dateContainer}>
-                <Text style={styles.fullDateTime}>{fullDateTime}</Text>
-              </View>
+            <View style={styles.dateAndFavoriteRow}>
+              <Text style={styles.fullDateTime}>{fullDateTime}</Text>
+
+              <TouchableOpacity
+                onPress={handleToggleFavorite}
+                style={styles.favoriteButton}
+                activeOpacity={0.7}
+              >
+                <Icon
+                  name={moment.isFavorite ? "heart" : "heart-outline"}
+                  size={24}
+                  color={moment.isFavorite ? colors.accent.coral : colors.text.secondary}
+                />
+              </TouchableOpacity>
             </View>
-
-            <TouchableOpacity
-              onPress={handleToggleFavorite}
-              style={styles.favoriteButtonTop}
-              activeOpacity={0.7}
-            >
-              <Icon
-                name={moment.isFavorite ? "heart" : "heart-outline"}
-                size={28}
-                color={moment.isFavorite ? colors.accent.coral : colors.text.secondary}
-              />
-            </TouchableOpacity>
           </View>
 
           {/* --- Enhanced Image Section --- */}
@@ -314,40 +309,36 @@ const styles = StyleSheet.create({
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
   },
-  headerWithFavorite: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+  headerContent: {
     marginBottom: spacing.lg,
   },
-  headerContent: {
-    flex: 1,
-    gap: spacing.sm,
-  },
   title: {
-    fontSize: typography.size.xxxl,
+    fontSize: typography.size.xl,
     fontWeight: typography.weight.bold,
     color: colors.text.primary,
-    lineHeight: typography.size.xxxl * typography.lineHeight.tight,
+    lineHeight: typography.size.xl * typography.lineHeight.tight,
     letterSpacing: typography.letterSpacing.tight,
   },
   titlePlaceholder: {
-    fontSize: typography.size.xxxl,
+    fontSize: typography.size.xl,
     fontWeight: typography.weight.medium,
     color: colors.text.tertiary,
-    lineHeight: typography.size.xxxl * typography.lineHeight.tight,
+    lineHeight: typography.size.xl * typography.lineHeight.tight,
     letterSpacing: typography.letterSpacing.tight,
     fontStyle: "italic",
   },
-  dateContainer: {
-    gap: spacing.xs,
+  dateAndFavoriteRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: spacing.xs,
   },
   fullDateTime: {
     fontSize: typography.size.sm,
     color: colors.text.secondary,
     fontWeight: typography.weight.medium,
   },
-  favoriteButtonTop: {
+  favoriteButton: {
     padding: spacing.sm,
     borderRadius: 20,
     backgroundColor: colors.background.white,
@@ -414,13 +405,13 @@ const styles = StyleSheet.create({
     ...shadows.medium,
   },
   moodSection: {
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   moodHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: spacing.md,
+    marginBottom: spacing.xs,
   },
   moodLabel: {
     fontSize: typography.size.sm,
@@ -446,10 +437,10 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   moodEmoji: {
-    fontSize: typography.size.xxxl,
+    fontSize: typography.size.xl,
     textAlign: "center",
-    minWidth: typography.size.xxxl + 4,
-    lineHeight: 32,
+    minWidth: typography.size.xl + 4,
+    lineHeight: 24,
   },
   moodName: {
     fontSize: typography.size.xl,
@@ -466,7 +457,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: spacing.sm,
-    marginBottom: spacing.md,
+    marginBottom: 2,
   },
   notesTitle: {
     fontSize: typography.size.sm,
