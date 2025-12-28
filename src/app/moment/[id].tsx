@@ -307,10 +307,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.card,
     borderRadius: 20,
     padding: spacing.lg,
-    marginBottom: spacing.lg + IMAGE_SIZE, // Account for image below header content
+    marginBottom: spacing.lg, // Normal spacing
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
     position: "relative", // For absolute positioning of image
+    minHeight: 80 + IMAGE_SIZE, // Ensure container is tall enough for header + image
   },
   headerContent: {
     marginBottom: spacing.lg,
