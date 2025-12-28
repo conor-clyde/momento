@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.card,
     borderRadius: 20,
     padding: spacing.lg,
-    marginBottom: spacing.lg + IMAGE_SIZE, // Account for absolutely positioned image
+    marginBottom: spacing.lg + IMAGE_SIZE, // Account for image below header content
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
     position: "relative", // For absolute positioning of image
@@ -392,7 +392,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: -spacing.lg, // Extend beyond card padding to screen edge
     right: -spacing.lg, // Extend beyond card padding to screen edge
-    bottom: 0, // Align with card bottom
+    top: 80, // Position below header content (approximate height)
     height: IMAGE_SIZE, // Same size as before
     borderBottomLeftRadius: 20, // Match card border radius at bottom
     borderBottomRightRadius: 20,
