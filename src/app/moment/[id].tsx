@@ -138,18 +138,22 @@ export default function MomentDetailScreen() {
             </View>
           </View>
 
-          {/* --- Image Section - extends to card edges below --- */}
+          {/* --- Image Section - extends to screen edges below --- */}
           {moment.imageUri ? (
-            <TouchableOpacity
-              onPress={() => setIsFullscreenVisible(true)}
-              activeOpacity={0.95}
-              style={styles.fullImageContainer}
-            >
-              <Image source={{ uri: moment.imageUri }} style={styles.fullImage} resizeMode="cover" />
-              <View style={styles.imageExpandIndicator}>
-                <Icon name="expand-outline" size={16} color={colors.text.white} />
+            <>
+              <View style={styles.imageSection}>
+                <TouchableOpacity
+                  onPress={() => setIsFullscreenVisible(true)}
+                  activeOpacity={0.95}
+                  style={styles.fullImageContainer}
+                >
+                  <Image source={{ uri: moment.imageUri }} style={styles.fullImage} resizeMode="cover" />
+                  <View style={styles.imageExpandIndicator}>
+                    <Icon name="expand-outline" size={16} color={colors.text.white} />
+                  </View>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </>
           ) : (
             <View style={styles.imageSection}>
               <View style={styles.noImageContainer}>
@@ -306,6 +310,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg,
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
+    position: "relative", // For absolute positioning of image
   },
   headerContent: {
     marginBottom: spacing.lg,
@@ -346,6 +351,7 @@ const styles = StyleSheet.create({
   // Enhanced Image Section
   imageSection: {
     alignItems: "center",
+    height: IMAGE_SIZE, // Ensure container has height for absolute positioned image
   },
   imageContainer: {
     width: IMAGE_SIZE,
@@ -381,16 +387,16 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.medium,
   },
 
-  // Full Image Layout (extends to card edges below header)
+  // Full Image Layout (extends to screen edges below header)
   fullImageContainer: {
-    width: "100%",
-    height: 280, // Fixed height for consistent appearance
+    position: "absolute",
+    left: -spacing.lg, // Extend beyond card padding to screen edge
+    right: -spacing.lg, // Extend beyond card padding to screen edge
+    bottom: 0, // Align with card bottom
+    height: IMAGE_SIZE, // Same size as before
     borderBottomLeftRadius: 20, // Match card border radius at bottom
     borderBottomRightRadius: 20,
     overflow: "hidden",
-    marginTop: spacing.lg, // Space from header content
-    marginHorizontal: -spacing.lg, // Extend to card edges
-    marginBottom: -spacing.lg, // Extend to bottom of card
   },
   fullImage: {
     width: "100%",
