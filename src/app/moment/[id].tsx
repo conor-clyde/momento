@@ -352,10 +352,8 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
-    borderRadius: 16,
     overflow: "hidden",
-    backgroundColor: colors.background.light,
-    ...shadows.medium,
+    backgroundColor: colors.background.card,
   },
   image: {
     width: "100%",
@@ -378,13 +376,11 @@ const styles = StyleSheet.create({
     height: IMAGE_SIZE,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.background.light,
-    borderRadius: 16,
+    backgroundColor: colors.background.card,
     borderWidth: 2,
     borderColor: colors.border.medium,
     borderStyle: "dashed",
     gap: spacing.lg,
-    ...shadows.medium,
   },
   noImageText: {
     fontSize: typography.size.lg,
