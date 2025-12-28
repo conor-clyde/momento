@@ -112,83 +112,51 @@ export default function MomentDetailScreen() {
           showsVerticalScrollIndicator={false}
         >
         {/* --- Combined Header and Image Section with Background --- */}
-        <View style={[styles.headerImageContainer, moment.imageUri && styles.headerImageContainerWithImage]}>
+        <View style={styles.headerImageContainer}>
+          {/* Header with Title, Date and Favorite - always in white card */}
+          <View style={styles.headerContent}>
+            {moment.title?.trim() ? (
+              <Text style={styles.title}>{moment.title}</Text>
+            ) : (
+              <Text style={styles.titlePlaceholder}>Untitled Moment</Text>
+            )}
+
+            <View style={styles.dateAndFavoriteRow}>
+              <Text style={styles.fullDateTime}>{fullDateTime}</Text>
+
+              <TouchableOpacity
+                onPress={handleToggleFavorite}
+                style={styles.favoriteButton}
+                activeOpacity={0.7}
+              >
+                <Icon
+                  name={moment.isFavorite ? "heart" : "heart-outline"}
+                  size={24}
+                  color={moment.isFavorite ? colors.accent.coral : colors.text.secondary}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* --- Image Section - extends to card edges below --- */}
           {moment.imageUri ? (
-            /* Image extends to card edges */
             <TouchableOpacity
               onPress={() => setIsFullscreenVisible(true)}
               activeOpacity={0.95}
               style={styles.fullImageContainer}
             >
               <Image source={{ uri: moment.imageUri }} style={styles.fullImage} resizeMode="cover" />
-
-              {/* Overlay content on top of image */}
-              <View style={styles.imageOverlayContent}>
-                <View style={styles.overlayHeaderContent}>
-                  {moment.title?.trim() ? (
-                    <Text style={styles.overlayTitle}>{moment.title}</Text>
-                  ) : (
-                    <Text style={styles.overlayTitlePlaceholder}>Untitled Moment</Text>
-                  )}
-
-                  <View style={styles.overlayDateAndFavoriteRow}>
-                    <Text style={styles.overlayFullDateTime}>{fullDateTime}</Text>
-
-                    <TouchableOpacity
-                      onPress={handleToggleFavorite}
-                      style={styles.overlayFavoriteButton}
-                      activeOpacity={0.7}
-                    >
-                      <Icon
-                        name={moment.isFavorite ? "heart" : "heart-outline"}
-                        size={24}
-                        color={colors.text.white}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-
-                <View style={styles.imageTouchIndicator}>
-                  <Icon name="expand-outline" size={16} color={colors.text.white} />
-                </View>
+              <View style={styles.imageExpandIndicator}>
+                <Icon name="expand-outline" size={16} color={colors.text.white} />
               </View>
             </TouchableOpacity>
           ) : (
-            /* No image - show traditional layout */
-            <>
-              {/* Header with Title, Date and Favorite */}
-              <View style={styles.headerContent}>
-                {moment.title?.trim() ? (
-                  <Text style={styles.title}>{moment.title}</Text>
-                ) : (
-                  <Text style={styles.titlePlaceholder}>Untitled Moment</Text>
-                )}
-
-                <View style={styles.dateAndFavoriteRow}>
-                  <Text style={styles.fullDateTime}>{fullDateTime}</Text>
-
-                  <TouchableOpacity
-                    onPress={handleToggleFavorite}
-                    style={styles.favoriteButton}
-                    activeOpacity={0.7}
-                  >
-                    <Icon
-                      name={moment.isFavorite ? "heart" : "heart-outline"}
-                      size={24}
-                      color={moment.isFavorite ? colors.accent.coral : colors.text.secondary}
-                    />
-                  </TouchableOpacity>
-                </View>
+            <View style={styles.imageSection}>
+              <View style={styles.noImageContainer}>
+                <Icon name="camera-outline" size={48} color={colors.text.tertiary} />
+                <Text style={styles.noImageText}>No photo captured</Text>
               </View>
-
-              {/* --- Enhanced Image Section --- */}
-              <View style={styles.imageSection}>
-                <View style={styles.noImageContainer}>
-                  <Icon name="camera-outline" size={48} color={colors.text.tertiary} />
-                  <Text style={styles.noImageText}>No photo captured</Text>
-                </View>
-              </View>
-            </>
+            </View>
           )}
         </View>
 
@@ -339,9 +307,6 @@ const styles = StyleSheet.create({
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
   },
-  headerImageContainerWithImage: {
-    padding: 0, // Remove padding when image extends to edges
-  },
   headerContent: {
     marginBottom: spacing.lg,
   },
@@ -399,12 +364,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     padding: spacing.sm,
   },
-  imageTouchIndicator: {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    padding: spacing.xs,
-    borderRadius: 12,
-    alignSelf: "flex-end",
-  },
   noImageContainer: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
@@ -422,58 +381,28 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.medium,
   },
 
-  // Full Image Layout (extends to card edges)
+  // Full Image Layout (extends to card edges below header)
   fullImageContainer: {
     width: "100%",
     height: 280, // Fixed height for consistent appearance
-    borderRadius: 20, // Match card border radius
+    borderBottomLeftRadius: 20, // Match card border radius at bottom
+    borderBottomRightRadius: 20,
     overflow: "hidden",
+    marginTop: spacing.lg, // Space from header content
+    marginHorizontal: -spacing.lg, // Extend to card edges
+    marginBottom: -spacing.lg, // Extend to bottom of card
   },
   fullImage: {
     width: "100%",
     height: "100%",
   },
-  imageOverlayContent: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "space-between",
-    padding: spacing.lg,
-  },
-  overlayHeaderContent: {
+  imageExpandIndicator: {
+    position: "absolute",
+    bottom: spacing.sm,
+    right: spacing.sm,
     backgroundColor: "rgba(0, 0, 0, 0.4)",
+    padding: spacing.xs,
     borderRadius: 12,
-    padding: spacing.md,
-  },
-  overlayTitle: {
-    fontSize: typography.size.xl,
-    fontWeight: typography.weight.bold,
-    color: colors.text.white,
-    lineHeight: typography.size.xl * typography.lineHeight.tight,
-    letterSpacing: typography.letterSpacing.tight,
-    marginBottom: spacing.xs,
-  },
-  overlayTitlePlaceholder: {
-    fontSize: typography.size.xl,
-    fontWeight: typography.weight.medium,
-    color: "rgba(255, 255, 255, 0.8)",
-    lineHeight: typography.size.xl * typography.lineHeight.tight,
-    letterSpacing: typography.letterSpacing.tight,
-    fontStyle: "italic",
-    marginBottom: spacing.xs,
-  },
-  overlayDateAndFavoriteRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  overlayFullDateTime: {
-    fontSize: typography.size.sm,
-    color: "rgba(255, 255, 255, 0.9)",
-    fontWeight: typography.weight.medium,
-  },
-  overlayFavoriteButton: {
-    padding: spacing.sm,
-    borderRadius: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
   },
 
   // Combined Content Section
