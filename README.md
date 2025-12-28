@@ -103,6 +103,7 @@ src/
 - Balancing technical features with thoughtful UX design
 
 ## 🔮 Future Improvements
+- Allow adding image from phone camera roll/gallery
 - Haptic feedback, touch gestures
 - Authentication and moment backup
 - Friending and sharing between users on different accounts
