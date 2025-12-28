@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
     position: "relative", // For absolute positioning of image
-    minHeight: 80 + IMAGE_SIZE, // Ensure container is tall enough for header + image
+    minHeight: 70 + IMAGE_SIZE + spacing.lg, // Ensure container is tall enough for header + image + spacing
   },
   headerContent: {
     marginBottom: spacing.lg,
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: -spacing.lg, // Extend beyond card padding to screen edge
     right: -spacing.lg, // Extend beyond card padding to screen edge
-    top: 80, // Position below header content (approximate height)
+    top: 70, // Position closer to header content
     height: IMAGE_SIZE, // Same size as before
     borderBottomLeftRadius: 20, // Match card border radius at bottom
     borderBottomRightRadius: 20,
