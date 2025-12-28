@@ -313,7 +313,8 @@ const styles = StyleSheet.create({
     ...shadows.medium,
   },
   headerContent: {
-    padding: spacing.lg,
+    paddingHorizontal: spacing.xxl,
+    paddingTop: spacing.lg,
     paddingBottom: spacing.sm,
   },
   title: {
