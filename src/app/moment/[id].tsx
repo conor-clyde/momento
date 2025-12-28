@@ -113,7 +113,7 @@ export default function MomentDetailScreen() {
         >
         {/* --- Combined Header and Image Section with Background --- */}
         <View style={styles.headerImageContainer}>
-          {/* Header with Title, Date and Favorite - always in white card */}
+          {/* Header with Title, Date and Favorite */}
           <View style={styles.headerContent}>
             {moment.title?.trim() ? (
               <Text style={styles.title}>{moment.title}</Text>
@@ -138,49 +138,51 @@ export default function MomentDetailScreen() {
             </View>
           </View>
 
-          {/* --- Image Section - extends to screen edges below --- */}
-          {moment.imageUri ? (
-            <>
-              <View style={styles.imageSection}>
-                <TouchableOpacity
-                  onPress={() => setIsFullscreenVisible(true)}
-                  activeOpacity={0.95}
-                  style={styles.fullImageContainer}
-                >
-                  <Image source={{ uri: moment.imageUri }} style={styles.fullImage} resizeMode="cover" />
-                  <View style={styles.imageExpandIndicator}>
+          {/* --- Enhanced Image Section --- */}
+          <View style={styles.imageSection}>
+            {moment.imageUri ? (
+              <TouchableOpacity
+                onPress={() => setIsFullscreenVisible(true)}
+                activeOpacity={0.95}
+                style={styles.imageContainer}
+              >
+                <Image source={{ uri: moment.imageUri }} style={styles.image} resizeMode="cover" />
+                <View style={styles.imageOverlay}>
+                  <View style={styles.imageTouchIndicator}>
                     <Icon name="expand-outline" size={16} color={colors.text.white} />
                   </View>
-                </TouchableOpacity>
-              </View>
-            </>
-          ) : (
-            <View style={styles.imageSection}>
+                </View>
+              </TouchableOpacity>
+            ) : (
               <View style={styles.noImageContainer}>
                 <Icon name="camera-outline" size={48} color={colors.text.tertiary} />
                 <Text style={styles.noImageText}>No photo captured</Text>
               </View>
-            </View>
-          )}
+            )}
+          </View>
         </View>
 
         {/* --- Combined Mood and Notes Section --- */}
         <View style={styles.contentSection}>
           <View style={styles.contentCard}>
-            {moodInfo && (
-              <View style={styles.moodSection}>
-                <View style={styles.moodHeader}>
-                  <Text style={styles.moodLabel}>Feeling</Text>
+            <View style={styles.moodSection}>
+              <View style={styles.moodHeader}>
+                <Text style={styles.moodLabel}>Feeling</Text>
 
-                </View>
-                <View style={styles.moodContent}>
-                  <Text style={styles.moodEmoji}>{moodInfo.emoji}</Text>
-                  <Text style={styles.moodName}>{moodInfo.label}</Text>
-                </View>
               </View>
-            )}
+              <View style={styles.moodContent}>
+                {moodInfo ? (
+                  <>
+                    <Text style={styles.moodEmoji}>{moodInfo.emoji}</Text>
+                    <Text style={styles.moodName}>{moodInfo.label}</Text>
+                  </>
+                ) : (
+                  <Text style={styles.noMoodContent}>No mood selected...</Text>
+                )}
+              </View>
+            </View>
 
-            <View style={[styles.notesSection, moodInfo && styles.notesSectionWithMood]}>
+            <View style={styles.notesSection}>
               <View style={styles.notesHeader}>
 
                 <Text style={styles.notesTitle}>Notes</Text>
@@ -306,15 +308,13 @@ const styles = StyleSheet.create({
   headerImageContainer: {
     backgroundColor: colors.background.card,
     borderRadius: 20,
-    padding: spacing.lg,
-    marginBottom: spacing.lg, // Normal spacing
+    marginBottom: spacing.lg,
     marginTop: spacing.xl, // Add top margin to account for native header
     ...shadows.medium,
-    position: "relative", // For absolute positioning of image
-    minHeight: 70 + IMAGE_SIZE + spacing.lg, // Ensure container is tall enough for header + image + spacing
   },
   headerContent: {
-    marginBottom: spacing.lg,
+    padding: spacing.lg,
+    paddingBottom: spacing.sm,
   },
   title: {
     fontSize: typography.size.xl,
@@ -351,14 +351,13 @@ const styles = StyleSheet.create({
 
   // Enhanced Image Section
   imageSection: {
-    alignItems: "center",
-    height: IMAGE_SIZE, // Ensure container has height for absolute positioned image
+    // Image sits directly below header content
   },
   imageContainer: {
-    width: IMAGE_SIZE,
-    height: IMAGE_SIZE,
+    width: "100%",
+    aspectRatio: 1,
+    borderRadius: 12,
     overflow: "hidden",
-    backgroundColor: colors.background.card,
   },
   image: {
     width: "100%",
@@ -371,12 +370,18 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     padding: spacing.sm,
   },
+  imageTouchIndicator: {
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    padding: spacing.xs,
+    borderRadius: 12,
+  },
   noImageContainer: {
-    width: IMAGE_SIZE,
-    height: IMAGE_SIZE,
+    width: "100%",
+    aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.background.card,
+    backgroundColor: colors.background.light,
+    borderRadius: 12,
     borderWidth: 2,
     borderColor: colors.border.medium,
     borderStyle: "dashed",
@@ -386,30 +391,6 @@ const styles = StyleSheet.create({
     fontSize: typography.size.lg,
     color: colors.text.tertiary,
     fontWeight: typography.weight.medium,
-  },
-
-  // Full Image Layout (extends to screen edges below header)
-  fullImageContainer: {
-    position: "absolute",
-    left: -spacing.lg, // Extend beyond card padding to screen edge
-    right: -spacing.lg, // Extend beyond card padding to screen edge
-    top: 70, // Position closer to header content
-    height: IMAGE_SIZE, // Same size as before
-    borderBottomLeftRadius: 20, // Match card border radius at bottom
-    borderBottomRightRadius: 20,
-    overflow: "hidden",
-  },
-  fullImage: {
-    width: "100%",
-    height: "100%",
-  },
-  imageExpandIndicator: {
-    position: "absolute",
-    bottom: spacing.sm,
-    right: spacing.sm,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    padding: spacing.xs,
-    borderRadius: 12,
   },
 
   // Combined Content Section
@@ -467,8 +448,14 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     fontWeight: typography.weight.semibold,
   },
+  noMoodContent: {
+    fontSize: typography.size.xl,
+    color: colors.text.tertiary,
+    fontWeight: typography.weight.regular,
+    fontStyle: "italic",
+  },
   notesSection: {
-    // No margin needed since it's the last section
+    marginTop: spacing.sm,
   },
   notesSectionWithMood: {
     marginTop: spacing.sm,
@@ -477,7 +464,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: spacing.sm,
-    marginBottom: 2,
+    marginBottom: spacing.xs,
   },
   notesTitle: {
     fontSize: typography.size.sm,
