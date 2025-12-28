@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
     // No margin needed since it's the last section
   },
   notesSectionWithMood: {
-    marginTop: spacing.md,
+    marginTop: spacing.sm,
   },
   notesHeader: {
     flexDirection: "row",
@@ -467,15 +467,15 @@ const styles = StyleSheet.create({
     letterSpacing: typography.letterSpacing.wide,
   },
   notesContent: {
-    fontSize: typography.size.md,
+    fontSize: typography.size.base,
     color: colors.text.primary,
-    lineHeight: typography.size.md * typography.lineHeight.relaxed,
+    lineHeight: typography.size.base * typography.lineHeight.normal,
     fontWeight: typography.weight.regular,
   },
   noNotesContent: {
-    fontSize: typography.size.md,
+    fontSize: typography.size.base,
     color: colors.text.tertiary,
-    lineHeight: typography.size.md * typography.lineHeight.relaxed,
+    lineHeight: typography.size.base * typography.lineHeight.normal,
     fontWeight: typography.weight.regular,
     fontStyle: "italic",
   },
