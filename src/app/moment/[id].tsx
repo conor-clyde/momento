@@ -441,7 +441,7 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.semibold,
   },
   noMoodContent: {
-    fontSize: typography.size.xl,
+    fontSize: typography.size.base,
     color: colors.text.tertiary,
     fontWeight: typography.weight.regular,
     fontStyle: "italic",

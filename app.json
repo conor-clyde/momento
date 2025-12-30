@@ -18,10 +18,9 @@
     "android": {
       "package": "com.conorclyde.momento",
       "permissions": [
-        "CAMERA"
-        // Note: Media library permissions are automatically added by expo-media-library
-        // RECORD_AUDIO, VIBRATE, and SYSTEM_ALERT_WINDOW removed from AndroidManifest.xml
-        // as they are not needed for the app's core functionality
+        "CAMERA",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO"
       ]
     },
     "ios": {
@@ -31,6 +30,7 @@
       "eas": {
         "projectId": "3dc58e68-bdd9-4447-a45a-7f8f4317b9aa"
       }
-    }
+    },
+    "owner": "stringcage"
   }
 }

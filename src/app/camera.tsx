@@ -4,17 +4,28 @@ import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import { CameraType, CameraView, useCameraPermissions } from "expo-camera";
 import * as Linking from "expo-linking";
+import * as MediaLibrary from "expo-media-library";
 import { router } from "expo-router";
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function CaptureScreen() {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
+  const [mediaPermission, setMediaPermission] = useState<boolean | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const cameraRef = useRef<CameraView>(null);
   const insets = useSafeAreaInsets();
+
+  // Check media library permissions on mount
+  React.useEffect(() => {
+    const checkMediaPermissions = async () => {
+      const { status } = await MediaLibrary.getPermissionsAsync();
+      setMediaPermission(status === 'granted');
+    };
+    checkMediaPermissions();
+  }, []);
 
   // Reset processing state when screen comes into focus
   useFocusEffect(
@@ -23,15 +34,22 @@ export default function CaptureScreen() {
     }, [])
   );
 
-  // Request camera permission
+  // Request camera and media library permissions together
   const handleRequestPermission = async () => {
     try {
-      const result = await requestPermission();
+      // Request both permissions simultaneously to potentially group them
+      const [cameraResult, mediaResult] = await Promise.all([
+        requestPermission(),
+        MediaLibrary.requestPermissionsAsync()
+      ]);
 
-      if (!result.granted && !result.canAskAgain) {
+      const cameraGranted = cameraResult.granted;
+      const mediaGranted = mediaResult.status === 'granted';
+
+      if ((!cameraGranted || !mediaGranted) && !cameraResult.canAskAgain) {
         Alert.alert(
-          "Camera Permission Required",
-          "Please enable camera access in your Settings.",
+          "Permissions Required",
+          "Camera and photo library access are needed to take and save photos.",
           [
             { text: "Cancel", style: "cancel" },
             {
@@ -91,8 +109,8 @@ export default function CaptureScreen() {
     }
   };
 
-  // Permission screen
-  if (!permission?.granted) {
+  // Permission screen - check both camera and media permissions
+  if (!permission?.granted || mediaPermission === false) {
     return (
       <View style={styles.permissionContainer}>
         <View style={styles.permissionCard}>
@@ -105,9 +123,9 @@ export default function CaptureScreen() {
             {permission ? "Camera Access Needed" : "Loading..."}
           </Text>
           <Text style={styles.permissionMessage}>
-            {permission
-              ? "We need your permission to take photos for your moments."
-              : "Checking camera permissions..."}
+            {permission && mediaPermission !== null
+              ? "We need camera and photo library access to take and save photos for your moments."
+              : "Checking permissions..."}
           </Text>
           {permission && (
             <Button
