@@ -136,7 +136,7 @@ export default function CaptureScreen() {
   // Camera screen
   return (
     <View style={styles.container}>
-      <CameraView ref={cameraRef} style={styles.camera} facing={facing} mode="picture" />
+      <CameraView ref={cameraRef} style={styles.camera} facing={facing} mode="picture" mute={true} />
 
       <View style={[styles.controls, { paddingBottom: spacing.xxl + insets.bottom }]}>
         <Button
