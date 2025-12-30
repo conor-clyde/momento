@@ -3,8 +3,9 @@
     "name": "Momento",
     "slug": "momento",
     "icon": "./assets/images/icon.png",
+    "description": "A beautiful mobile app for capturing and reflecting on meaningful moments - big or small. Take photos, add moods and notes, track daily streaks, and build mindful habits.",
     "splash": {
-      "image": "./assets/images/icon.png",
+      "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,11 +19,21 @@
     "android": {
       "package": "com.conorclyde.momento",
       "permissions": [
-        "CAMERA"
-      ]
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO"
+      ],
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png"
+      }
     },
     "ios": {
-      "bundleIdentifier": "com.conorclyde.momento"
+      "bundleIdentifier": "com.conorclyde.momento",
+      "icon": "./assets/images/icon.png"
     },
     "extra": {
       "eas": {
