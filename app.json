@@ -29,11 +29,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png"
-      },
-      "blockedPermissions": [
-        "RECORD_AUDIO",
-        "MODIFY_AUDIO_SETTINGS"
-      ]
+      }
     },
     "ios": {
       "bundleIdentifier": "com.conorclyde.momento",
