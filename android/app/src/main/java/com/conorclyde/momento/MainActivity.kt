@@ -1,4 +1,4 @@
-package com.stringcage.momento
+package com.conorclyde.momento
 
 import android.os.Build
 import android.os.Bundle

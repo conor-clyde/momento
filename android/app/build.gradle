@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.stringcage.momento'
+    namespace 'com.conorclyde.momento'
     defaultConfig {
-        applicationId 'com.stringcage.momento'
+        applicationId 'com.conorclyde.momento'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

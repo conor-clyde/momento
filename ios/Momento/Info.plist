@@ -27,7 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.stringcage.momento</string>
+          <string>com.conorclyde.momento</string>
         </array>
       </dict>
       <dict>

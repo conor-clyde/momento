@@ -16,7 +16,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "android": {
-      "package": "com.stringcage.momento",
+      "package": "com.conorclyde.momento",
       "permissions": [
         "CAMERA"
         // Note: Media library permissions are automatically added by expo-media-library
@@ -25,7 +25,7 @@
       ]
     },
     "ios": {
-      "bundleIdentifier": "com.stringcage.momento"
+      "bundleIdentifier": "com.conorclyde.momento"
     },
     "extra": {
       "eas": {
