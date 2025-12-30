@@ -3,7 +3,7 @@
     "name": "Momento",
     "slug": "momento",
     "icon": "./assets/images/icon.png",
-    "description": "A beautiful mobile app for capturing and reflecting on meaningful moments - big or small. Take photos, add moods and notes, track daily streaks, and build mindful habits.",
+    "description": "A beautiful mobile app for capturing and reflecting on meaningful moments. Take photos with your camera, add moods and notes, track daily streaks, and build mindful habits.",
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
