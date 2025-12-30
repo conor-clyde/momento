@@ -147,21 +147,16 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
           // Support both old format (array of strings) and new format (object with ids)
           if (Array.isArray(parsed)) {
             // Old format - migrate to new format
-            logger.log(`[Achievements] Loading ${parsed.length} unlocked achievements (old format)`);
             setUnlockedAchievementIds(new Set(parsed));
           } else if (parsed.ids && Array.isArray(parsed.ids)) {
             // New format
-            logger.log(`[Achievements] Loading ${parsed.ids.length} unlocked achievements:`, parsed.ids);
             setUnlockedAchievementIds(new Set(parsed.ids));
           }
         } catch (parseError) {
           console.error("Error parsing stored achievements:", parseError);
           // Don't remove storage on parse error - preserve data if possible
           // Only remove if data is completely corrupted
-          logger.warn("[Achievements] Parse error, but preserving storage to avoid data loss");
         }
-      } else {
-        logger.log("[Achievements] No stored achievements found");
       }
     } catch (error) {
       console.error("Error loading achievements:", error);
@@ -172,7 +167,6 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
   const saveUnlockedAchievements = async (unlockedIds: Set<string>) => {
     try {
       const data = Array.from(unlockedIds);
-      logger.log(`[Achievements] Saving ${unlockedIds.size} unlocked achievements:`, data);
       await AsyncStorage.setItem(ACHIEVEMENTS_STORAGE_KEY, JSON.stringify(data));
     } catch (error) {
       console.error("Error saving achievements:", error);
@@ -255,10 +249,6 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
   // CRITICAL: Always pass unlockedAchievementIds to preserve unlocked achievements
   // Even if moments are deleted, unlocked achievements must remain unlocked
   const achievements = useMemo(() => {
-    // Log when calculating achievements to help debug
-    if (unlockedAchievementIds.size > 0) {
-      logger.log(`[Achievements] Calculating with ${unlockedAchievementIds.size} preserved unlocked achievements`);
-    }
     return calculateAchievements(moments, unlockedAchievementIds, momentData);
   }, [moments, unlockedAchievementIds, momentData]);
 
@@ -270,12 +260,10 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
         .filter(a => a.unlocked && !unlockedAchievementIds.has(a.id));
 
       if (newlyUnlocked.length > 0) {
-        logger.log(`[Achievements] ${newlyUnlocked.length} new achievements unlocked:`, newlyUnlocked.map(a => a.id));
         setUnlockedAchievementIds(prev => {
           // Always preserve existing unlocked achievements - only add new ones
           const updated = new Set(prev);
           newlyUnlocked.forEach(a => updated.add(a.id));
-          logger.log(`[Achievements] Updated unlocked set: ${updated.size} total (added ${newlyUnlocked.length})`);
           return updated;
         });
       }
@@ -287,10 +275,8 @@ export function MomentsProvider({ children }: { children: ReactNode }) {
         return achievement && !achievement.unlocked;
       });
 
-      if (shouldBeUnlocked.length > 0) {
-        logger.warn(`[Achievements] WARNING: ${shouldBeUnlocked.length} achievements in Set but marked as locked:`, shouldBeUnlocked);
-        logger.warn(`[Achievements] This should never happen - achievements in Set should always be unlocked`);
-      }
+      // Defensive check: ensure all achievements marked as unlocked in the Set are actually unlocked
+      // This helps catch any bugs where achievements might be incorrectly marked as locked
     }
   }, [achievements, unlockedAchievementIds, isLoading]);
 
