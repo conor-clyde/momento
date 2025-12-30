@@ -12,9 +12,21 @@ This Privacy Policy explains how Momento handles information when you use the ap
 Momento does not collect, store, transmit, or process any personal data.
 
 The app may request access to the following device features only to function locally on your phone:
-	•	Camera — to capture photos for your personal journal entries
-	•	Media Library — to save your captured photos to your device's camera roll
-	•	Device Storage: To store your photos and journal entries locally on your device
+
+**Camera Access**
+- **Purpose**: To capture photos for your personal journal entries
+- **When**: Only when you choose to take a photo using the camera feature
+- **Data**: Photos are stored locally on your device only
+
+**Media Library Access**
+- **Purpose**: To save your captured photos to your device's camera roll/gallery
+- **When**: Only when you tap "Save" on a photo in your journal
+- **Data**: Only saves photos you have taken within the app
+- **Note**: On Android devices, media permissions are grouped by the operating system, which may show access to images, videos, and audio files together. Momento only accesses and saves images.
+
+**Device Storage**
+- **Purpose**: To store your photos and journal entries locally on your device
+- **Data**: All data remains on your device and is never transmitted to external servers
 
 All photos and journal entries are stored exclusively on your device.
 Momento has no servers and no online accounts.

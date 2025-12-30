@@ -18,10 +18,10 @@
     "android": {
       "package": "com.stringcage.momento",
       "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE",
-        "READ_MEDIA_IMAGES"
+        "CAMERA"
+        // Note: Media library permissions are automatically added by expo-media-library
+        // RECORD_AUDIO, VIBRATE, and SYSTEM_ALERT_WINDOW removed from AndroidManifest.xml
+        // as they are not needed for the app's core functionality
       ]
     },
     "ios": {
