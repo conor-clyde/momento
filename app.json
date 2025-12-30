@@ -2,20 +2,28 @@
   "expo": {
     "name": "Momento",
     "slug": "momento",
-    "version": "1.0.0",
-    "newArchEnabled": false,
-    "web": {
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "android": {
+      "package": "com.stringcage.momento"
+    },
+    "ios": {
+      "bundleIdentifier": "com.stringcage.momento"
     },
     "extra": {
-      "router": {},
       "eas": {
-        "projectId": "a9605649-f9ae-42a0-a630-dfe16b8fd0b0"
+        "projectId": "3dc58e68-bdd9-4447-a45a-7f8f4317b9aa"
       }
     }
   }

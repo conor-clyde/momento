@@ -16,15 +16,6 @@ import { Alert, Dimensions, Image, Modal, Pressable, ScrollView, StyleSheet, Tou
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
-// Responsive image sizing - adjust based on screen size
-const getImageSize = () => {
-  const maxWidth = Math.min(SCREEN_WIDTH - spacing.lg * 2, 400); // Cap at 400px for very large screens
-  const maxHeight = SCREEN_HEIGHT * 0.4; // Don't take more than 40% of screen height
-  return Math.min(maxWidth, maxHeight);
-};
-
-const IMAGE_SIZE = getImageSize();
-
 export default function MomentDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { moments, removeMoment, toggleFavorite } = useMoments();

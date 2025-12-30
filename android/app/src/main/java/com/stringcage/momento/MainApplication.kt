@@ -1,4 +1,4 @@
-package com.stringcage.momentoprojectapp
+package com.stringcage.momento
 
 import android.app.Application
 import android.content.res.Configuration
