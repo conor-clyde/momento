@@ -12,26 +12,34 @@ import { Alert } from "react-native";
  */
 export async function savePhotoToCameraRoll(imageUri: string): Promise<boolean> {
   try {
-    // Request permission only if needed
-    const { status } = await MediaLibrary.requestPermissionsAsync();
-
-    if (status !== "granted") {
-      Alert.alert(
-        "Permission Denied",
-        "Please enable media access in Settings to save photos. This allows saving images to your camera roll."
-      );
-      return false;
-    }
-
-    // Save the image
+    // Try to save the image directly - Expo will request permissions if needed
     await MediaLibrary.createAssetAsync(imageUri);
     return true;
   } catch (error: any) {
     console.error("Error saving photo to camera roll:", error);
-    Alert.alert(
-      "Error",
-      "Failed to save photo to camera roll. Please try again."
-    );
+
+    // If it fails due to permissions, show a helpful message
+    if (error.message?.includes("permission") || error.message?.includes("denied")) {
+      Alert.alert(
+        "Permission Required",
+        "To save photos to your camera roll, please grant media access permission. You can do this in Settings > Apps > Momento > Permissions.",
+        [
+          { text: "Cancel", style: "cancel" },
+          {
+            text: "Open Settings",
+            onPress: () => {
+              // Note: We can't directly open app settings on Android from here
+              // The user will need to go to settings manually
+            },
+          },
+        ]
+      );
+    } else {
+      Alert.alert(
+        "Error",
+        "Failed to save photo to camera roll. Please try again."
+      );
+    }
     return false;
   }
 }

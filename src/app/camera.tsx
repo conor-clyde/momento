@@ -18,7 +18,7 @@ export default function CaptureScreen() {
   const cameraRef = useRef<CameraView>(null);
   const insets = useSafeAreaInsets();
 
-  // Check media library permissions on mount
+  // Check media library permissions on mount (for display purposes only)
   React.useEffect(() => {
     const checkMediaPermissions = async () => {
       const { status } = await MediaLibrary.getPermissionsAsync();
@@ -34,22 +34,15 @@ export default function CaptureScreen() {
     }, [])
   );
 
-  // Request camera and media library permissions together
+  // Request camera permission (media permission requested when saving)
   const handleRequestPermission = async () => {
     try {
-      // Request both permissions simultaneously to potentially group them
-      const [cameraResult, mediaResult] = await Promise.all([
-        requestPermission(),
-        MediaLibrary.requestPermissionsAsync()
-      ]);
+      const cameraResult = await requestPermission();
 
-      const cameraGranted = cameraResult.granted;
-      const mediaGranted = mediaResult.status === 'granted';
-
-      if ((!cameraGranted || !mediaGranted) && !cameraResult.canAskAgain) {
+      if (!cameraResult.granted && !cameraResult.canAskAgain) {
         Alert.alert(
-          "Permissions Required",
-          "Camera and photo library access are needed to take and save photos.",
+          "Camera Permission Required",
+          "Camera access is needed to take photos for your moments.",
           [
             { text: "Cancel", style: "cancel" },
             {
@@ -109,8 +102,8 @@ export default function CaptureScreen() {
     }
   };
 
-  // Permission screen - check both camera and media permissions
-  if (!permission?.granted || mediaPermission === false) {
+  // Permission screen - check camera permission only
+  if (!permission?.granted) {
     return (
       <View style={styles.permissionContainer}>
         <View style={styles.permissionCard}>
@@ -123,8 +116,8 @@ export default function CaptureScreen() {
             {permission ? "Camera Access Needed" : "Loading..."}
           </Text>
           <Text style={styles.permissionMessage}>
-            {permission && mediaPermission !== null
-              ? "We need camera and photo library access to take and save photos for your moments."
+            {permission
+              ? "We need camera access to take photos for your moments. Photo library access will be requested when saving."
               : "Checking permissions..."}
           </Text>
           {permission && (
