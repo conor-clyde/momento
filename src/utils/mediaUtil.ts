@@ -21,7 +21,7 @@ export async function savePhotoToCameraRoll(imageUri: string): Promise<boolean> 
       if (status !== "granted") {
         Alert.alert(
           "Permission Required",
-          "Momento needs access to your photo library to save photos to your camera roll. On Android, this permission group includes access to images, videos, and audio files, but Momento only saves photos and respects your privacy."
+          "Momento needs photo library access to save photos. Android groups this with video/audio permissions, but we only save your photos."
         );
         return false;
       }
