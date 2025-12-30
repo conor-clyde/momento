@@ -16,7 +16,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "android": {
-      "package": "com.stringcage.momento"
+      "package": "com.stringcage.momento",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_MEDIA_IMAGES"
+      ]
     },
     "ios": {
       "bundleIdentifier": "com.stringcage.momento"
