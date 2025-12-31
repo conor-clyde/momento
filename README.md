@@ -26,11 +26,11 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 
 ## ✨ Features
 
-- ✅ Capture moments using the device camera
-- ✅ Attach moods and reflective notes
-- ✅ Moment gallery, mood tracking, and statistics
-- ✅ Clean and intuitive UI design
-- ✅ Achievements and streaks to encourage mindful habits
+- Capture moments using the device camera
+- Attach moods and reflective notes
+- Moment gallery, mood tracking, and statistics
+- Clean and intuitive UI design
+- Achievements and streaks to encourage mindful habits
 
 ## 📱 App Screenshots
 
