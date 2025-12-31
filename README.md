@@ -1,8 +1,6 @@
 # 📸 Momento
 
-Momento is a mobile app for capturing and reflecting on meaningful moments - big or small - using photos, mood tracking, and short notes. It is designed to encourage mindfulness and appreciation without the false pressure to "go big" on moments. 
-
-Portfolio project built as a complete React Native application using Expo.
+A mindful-focused mobile app that helps users capture and reflect on meaningful moments through photo journaling and mood tracking. Built as a full React Native application with Expo, demonstrating full-stack mobile development and thoughtful UX design.
 
 <img src="assets/images/icon.png" alt="Momento App" width="120" />
 
@@ -10,11 +8,9 @@ Portfolio project built as a complete React Native application using Expo.
 
 - Capture moments using the device camera
 - Attach moods and reflective notes
-- Browse moments in a scrollable gallery
+- Moment gallery, mood tracking, and statistics
 - Clean and intuitive UI design
-- Daily streaks to build mindful habits
-- Statistics for further reflection
-- Achievements that encourage consistency 
+- Achievements and streaks to build mindful habits
 
 ## 📱 App Screenshots
 
@@ -89,12 +85,7 @@ src/
 ```
 
 ## 📚 What I Learned
-- Building a multi-screen mobile app with Expo Router
-- Managing shared state with React Context
-- Working with device features such as the camera
-- Designing a scalable React Native project structure
-- Writing reusable and maintainable TypeScript components
-- Balancing technical features with thoughtful UX design
+Learned how to use React Native to build a multi-screen, cross-platform mobile application from the ground up, managing navigation, global state, and device features like the camera, while balancing technical functionality with thoughtful UX design. Along the way, I tackled challenges in asynchronous workflows, performance optimization, and UX/UI refinement, delivering a polished, user-friendly experience and designing a scalable project structure with reusable, maintainable TypeScript components.
 
 ## 🔮 Future Improvements
 - Allow adding image from phone camera roll/gallery
