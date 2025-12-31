@@ -1,44 +1,67 @@
+![MIT License](https://img.shields.io/badge/License-MIT-green)
+![Expo](https://img.shields.io/badge/Expo-54-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
+![React Native](https://img.shields.io/badge/React%20Native-0.81-blueviolet)
+
 # 📸 Momento
 
-A mindful-focused mobile app that helps users capture and reflect on meaningful moments through photo journaling and mood tracking. Built as a full React Native application with Expo, demonstrating full-stack mobile development and thoughtful UX design.
+<img src="assets/images/icon.png" alt="Momento App" width="120" align="center" />
 
-<img src="assets/images/icon.png" alt="Momento App" width="120" />
+A **mindfulness-focused mobile app** that helps users **capture and reflect on meaningful moments** through **photo journaling** and **mood tracking**. Built with **React Native and Expo**, demonstrating **full-stack mobile development** and thoughtful **UX design**.
+
+---
+
+## 📑 Table of Contents
+- [Features](#-features)
+- [App Screenshots](#-app-screenshots)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [What I Learned](#-what-i-learned)
+- [Future Improvements](#-future-improvements)
+- [License](#-license)
+- [Author](#-author)
+
+---
 
 ## ✨ Features
 
-- Capture moments using the device camera
-- Attach moods and reflective notes
-- Moment gallery, mood tracking, and statistics
-- Clean and intuitive UI design
-- Achievements and streaks to build mindful habits
+- ✅ Capture moments using the device camera
+- ✅ Attach moods and reflective notes
+- ✅ Moment gallery, mood tracking, and statistics
+- ✅ Clean and intuitive UI design
+- ✅ Achievements and streaks to encourage mindful habits
 
 ## 📱 App Screenshots
 
-### **Home and Tab Screens**
+**Home & Tabs**
 | Home | Gallery | Statistics |
 |------|---------|------------|
-| <img src="assets/screenshots/Home.jpg" width="200" alt="Home Screen"> | <img src="assets/screenshots/Gallery.jpg" width="200" alt="Gallery Screen"> | <img src="assets/screenshots/Statistics.jpg" width="200" alt="Statistics Screen">|
+| <img src="assets/screenshots/Home.jpg" width="200" alt="Home Screen"> | <img src="assets/screenshots/Gallery.jpg" width="200" alt="Gallery Screen"> | <img src="assets/screenshots/Statistics.jpg" width="200" alt="Statistics Screen"> |
 
-### **Moment Screens**
+**Moment Screens**
 | Camera | Add Moment | Edit Moment | View Moment |
 |--------|------------|------------|-------------|
 | <img src="assets/screenshots/Camera.jpg" width="200" alt="Camera Screen"> | <img src="assets/screenshots/AddMoment.jpg" width="200" alt="Add Moment Screen"> | <img src="assets/screenshots/Edit.jpg" width="200" alt="Edit Moment Screen"> | <img src="assets/screenshots/Moment.jpg" width="200" alt="View Moment Screen"> |
 
-### **Additional**
-| Achievements|
+**Additional**
+| Achievements |
 |-------------|
-| <img src="assets/screenshots/Achivements.jpg" width="200" alt="Achievements Screen"> |
+| <img src="assets/screenshots/Achievements.jpg" width="200" alt="Achievements Screen"> |
+
+*Screenshots shown in portrait mode, iPhone 14 Pro.*
 
 ## 🚀 Tech Stack
 
-- **Framework**: React Native with Expo
-- **Language**: TypeScript
-- **Navigation**: Expo Router (file-based routing)
-- **State Management**: React Context
-- **Storage**: AsyncStorage (local persistence)
-- **Camera**: Expo Camera
-- **Styling**: Custom styling
-- **Icons**: Expo Vector Icons & Symbols
+| Category         | Technology                |
+|-----------------|---------------------------|
+| Framework        | React Native with Expo    |
+| Language         | TypeScript                |
+| Navigation       | Expo Router (file-based)  |
+| State Management | React Context             |
+| Storage          | AsyncStorage              |
+| Camera           | Expo Camera               |
+| Styling          | Custom styles             |
+| Icons            | Expo Vector Icons & Symbols |
 
 ## Quick Start (Using Expo Go)
 
@@ -85,7 +108,13 @@ src/
 ```
 
 ## 📚 What I Learned
-Learned how to use React Native to build a multi-screen, cross-platform mobile application from the ground up, managing navigation, global state, and device features like the camera, while balancing technical functionality with thoughtful UX design. Along the way, I tackled challenges in asynchronous workflows, performance optimization, and UX/UI refinement, delivering a polished, user-friendly experience and designing a scalable project structure with reusable, maintainable TypeScript components.
+
+- Building a multi-screen mobile app with Expo Router
+- Managing shared state with React Context
+- Working with device features such as the camera
+- Designing a scalable React Native project structure
+- Writing reusable and maintainable TypeScript components
+- Balancing technical features with thoughtful UX design
 
 ## 🔮 Future Improvements
 - Allow adding image from phone camera roll/gallery
@@ -93,7 +122,7 @@ Learned how to use React Native to build a multi-screen, cross-platform mobile a
 - Authentication and moment backup
 - Friending and sharing between users on different accounts
 - Improved accessibility and animations
-- Improved statistics and achivements
+- Improved statistics and achievements
 
 ## 📄 License
 
