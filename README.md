@@ -20,7 +20,7 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 - [What I Learned](#-what-i-learned)
 - [Future Improvements](#-future-improvements)
 - [License](#-license)
-- [Author](#-author)
+- [Author](#author)
 
 ---
 
