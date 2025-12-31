@@ -19,8 +19,8 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 - [Project Structure](#-project-structure)
 - [What I Learned](#-what-i-learned)
 - [Future Improvements](#-future-improvements)
-- [License](#-license)
-- [Author](#-author)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -132,11 +132,11 @@ src/
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
-## 👨‍💻 Author
+## Author
 
 **Conor Clyde**
 - LinkedIn: [linkedin.com/in/conorclyde](https://linkedin.com/in/conorclyde)
