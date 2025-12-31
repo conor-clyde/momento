@@ -25,6 +25,23 @@ Portfolio project built as a complete React Native application using Expo.
 - Statistics
 - Achievements
 
+## 📱 App Screenshots
+
+### **Home and Tab Pages**
+| Home | Gallery | Statistics |
+|------|---------|------------|
+| <img src="assets/screenshots/Home.jpg" width="200" alt="Home Screen"> | <img src="assets/screenshots/Gallery.jpg" width="200" alt="Gallery Screen"> | <img src="assets/screenshots/Statistics.jpg" width="200" alt="Statistics Screen">|
+
+### **Moments**
+| Camera | Add Moment | Edit Moment | View Moment |
+|--------|------------|------------|-------------|
+| <img src="assets/screenshots/Camera.jpg" width="200" alt="Camera Screen"> | <img src="assets/screenshots/AddMoment.jpg" width="200" alt="Add Moment Screen"> | <img src="assets/screenshots/Edit.jpg" width="200" alt="Edit Moment Screen"> | <img src="assets/screenshots/Moment.jpg" width="200" alt="View Moment Screen"> |
+
+### **Additional**
+| Achievements|
+|-------------|
+| <img src="assets/screenshots/Achivements.jpg" width="200" alt="Achievements Screen"> |
+
 ## 🚀 Tech Stack
 
 - **Framework**: React Native with Expo
