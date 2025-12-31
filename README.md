@@ -11,7 +11,7 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 - [Features](#-features)
 - [App Screenshots](#-app-screenshots)
 - [Tech Stack](#-tech-stack)
