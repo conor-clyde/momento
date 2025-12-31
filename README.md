@@ -1,6 +1,7 @@
 # 📸 Momento
 
-Momento is a mobile app for capturing and reflecting on meaningful moments - big or small - using photos, mood tracking, and short notes. It is designed to encourage mindfulness and appreciation without the false pressure to "go big" on moments.
+Momento is a mobile app for capturing and reflecting on meaningful moments - big or small - using photos, mood tracking, and short notes. It is designed to encourage mindfulness and appreciation without the false pressure to "go big" on moments. 
+
 Portfolio project built as a complete React Native application using Expo.
 
 <img src="assets/images/icon.png" alt="Momento App" width="120" />
@@ -15,24 +16,14 @@ Portfolio project built as a complete React Native application using Expo.
 - Statistics for further reflection
 - Achievements that encourage consistency 
 
-## 📱 Screens
-
-- Home
-- Gallery
-- Camera
-- Add Moment Details
-- View / Edit Moment
-- Statistics
-- Achievements
-
 ## 📱 App Screenshots
 
-### **Home and Tab Pages**
+### **Home and Tab Screens**
 | Home | Gallery | Statistics |
 |------|---------|------------|
 | <img src="assets/screenshots/Home.jpg" width="200" alt="Home Screen"> | <img src="assets/screenshots/Gallery.jpg" width="200" alt="Gallery Screen"> | <img src="assets/screenshots/Statistics.jpg" width="200" alt="Statistics Screen">|
 
-### **Moments**
+### **Moment Screens**
 | Camera | Add Moment | Edit Moment | View Moment |
 |--------|------------|------------|-------------|
 | <img src="assets/screenshots/Camera.jpg" width="200" alt="Camera Screen"> | <img src="assets/screenshots/AddMoment.jpg" width="200" alt="Add Moment Screen"> | <img src="assets/screenshots/Edit.jpg" width="200" alt="Edit Moment Screen"> | <img src="assets/screenshots/Moment.jpg" width="200" alt="View Moment Screen"> |
@@ -50,12 +41,10 @@ Portfolio project built as a complete React Native application using Expo.
 - **State Management**: React Context
 - **Storage**: AsyncStorage (local persistence)
 - **Camera**: Expo Camera
-- **Styling**: Structured custom styling
+- **Styling**: Custom styling
 - **Icons**: Expo Vector Icons & Symbols
 
-## 🛠️ Installation & Setup
-
-### Quick Start (Using Expo Go)
+## Quick Start (Using Expo Go)
 
 1. **Clone the repository**
 ```bash
@@ -79,18 +68,6 @@ npm start
 
 5. **Run on your device**
 - After the server starts, scan the QR code with Expo Go on your phone
-
-## 📱 Usage
-1.	Capture a moment using the camera
-2.	Select a mood (optional)
-3.	Add notes to reflect on the moment (optional)
-4.	Browse moments in the gallery
-5.	Track statistics and unlock achievements
-6.	Build streaks through daily reflection
-
-## 🎯 App Philosophy
-
-Momento is built on the belief that life doesn't need to be extraordinary to be meaningful, encouraging users to notice and reflect on everyday moments that quietly shape their lives—whether joyful, neutral, or difficult—as a reminder that life is built from small moments, noticed.
 
 ## 📂 Project Structure
 
