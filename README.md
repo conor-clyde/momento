@@ -15,6 +15,7 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 - [Features](#-features)
 - [App Screenshots](#-app-screenshots)
 - [Tech Stack](#-tech-stack)
+- [Quick Start](#quick-start-using-expo-go)
 - [Project Structure](#-project-structure)
 - [What I Learned](#-what-i-learned)
 - [Future Improvements](#-future-improvements)
@@ -109,20 +110,27 @@ src/
 
 ## 📚 What I Learned
 
-- Building a multi-screen mobile app with Expo Router
-- Managing shared state with React Context
-- Working with device features such as the camera
-- Designing a scalable React Native project structure
-- Writing reusable and maintainable TypeScript components
-- Balancing technical features with thoughtful UX design
+**Technical:**
+- Built a multi-screen, cross-platform mobile app with React Native and Expo
+- Managed navigation, global state, and device features like the camera
+- Tackled challenges in asynchronous workflows and performance optimization
+
+**UX & Design:**
+- Designed a clean, intuitive, and responsive UI
+- Created a scalable project structure with reusable TypeScript components
+- Balanced technical functionality with a thoughtful user experience
+
+---
 
 ## 🔮 Future Improvements
-- Allow adding image from phone camera roll/gallery
-- Haptic feedback, touch gestures
-- Authentication and moment backup
-- Friending and sharing between users on different accounts
-- Improved accessibility and animations
-- Improved statistics and achievements
+- Add images from phone gallery
+- Haptic feedback & touch gestures
+- User authentication & moment backup
+- Social sharing & friending
+- Enhanced accessibility & animations
+- Advanced statistics and achievements
+
+---
 
 ## 📄 License
 
@@ -130,8 +138,8 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-Conor Clyde
-- LinkedIn: linkedin.com/in/conorclyde/
+**Conor Clyde**
+- LinkedIn: [linkedin.com/in/conorclyde](https://linkedin.com/in/conorclyde)
 - Email: clydeconor@gmail.com
 
 Built with ❤️ using React Native and Expo
