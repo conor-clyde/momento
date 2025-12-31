@@ -2,7 +2,7 @@
 // MOMENT IMAGE - Reusable image display component (preview or polaroid)
 // ============================================================================
 
-import { Icon, Text } from "@/src/components";
+import { Icon, Text } from "@/src/components/ui";
 import { colors, spacing, typography } from "@/src/constants/theme";
 import { hasImage } from "@/src/utils";
 import { Image, StyleSheet, View } from "react-native";

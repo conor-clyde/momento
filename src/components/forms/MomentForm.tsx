@@ -2,8 +2,10 @@
 // MOMENT FORM - Shared form component for adding and editing moments
 // ============================================================================
 
-import { Button, MomentImage, TextInput } from "@/src/components";
 import { MoodSelector } from "@/src/components/forms/MoodSelector";
+import { TextInput } from "@/src/components/forms/TextInput";
+import { MomentImage } from "@/src/components/layout";
+import { Button } from "@/src/components/ui";
 import { MoodValue } from "@/src/constants/moods";
 import { colors, spacing } from "@/src/constants/theme";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from "react-native";
