@@ -11,7 +11,7 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 - [Features](#-features)
 - [App Screenshots](#-app-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -19,18 +19,18 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 - [Project Structure](#-project-structure)
 - [What I Learned](#-what-i-learned)
 - [Future Improvements](#-future-improvements)
-- [License](#-license)
+- [License](#license)
 - [Author](#author)
 
 ---
 
 ## ✨ Features
 
-- ✅ Capture moments using the device camera
-- ✅ Attach moods and reflective notes
-- ✅ Moment gallery, mood tracking, and statistics
-- ✅ Clean and intuitive UI design
-- ✅ Achievements and streaks to encourage mindful habits
+- Capture moments using the device camera
+- Attach moods and reflective notes
+- Moment gallery, mood tracking, and statistics
+- Clean and intuitive UI design
+- Achievements and streaks to encourage mindful habits
 
 ## 📱 App Screenshots
 
@@ -132,11 +132,11 @@ src/
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
-## 👨‍💻 Author
+## Author
 
 **Conor Clyde**
 - LinkedIn: [linkedin.com/in/conorclyde](https://linkedin.com/in/conorclyde)
