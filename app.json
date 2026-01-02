@@ -5,7 +5,7 @@
     "icon": "./assets/images/icon.png",
     "description": "A beautiful mobile app for capturing and reflecting on meaningful moments. Take photos with your camera, add moods and notes, track daily streaks, and build mindful habits.",
     "splash": {
-      "image": "./assets/images/splash-icon.png",
+      "image": "./assets/images/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,8 +23,8 @@
       ],
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#FFFFFF"
       },
       "blockedPermissions": [
         "RECORD_AUDIO",
@@ -40,6 +40,9 @@
         "projectId": "3dc58e68-bdd9-4447-a45a-7f8f4317b9aa"
       }
     },
-    "owner": "stringcage"
+    "owner": "stringcage",
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
