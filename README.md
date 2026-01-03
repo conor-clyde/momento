@@ -6,6 +6,7 @@
 # Momento
 <img src="assets/images/icon.png" alt="Momento App" width="120" align="center" />
 Momento is a mindfulness-focused mobile application that helps users capture, reflect on, and build awareness of meaningful everyday moments through photo journaling and mood tracking.
+<br/> <br/>
 
 Built with React Native and Expo, this project demonstrates production-quality mobile development, thoughtful UX design, and clean, maintainable TypeScript architecture.
 
