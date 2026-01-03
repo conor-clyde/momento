@@ -3,8 +3,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
 ![React Native](https://img.shields.io/badge/React%20Native-0.81-blueviolet)
 
-# 📸 Momento
-
+# Momento
 <img src="assets/images/icon.png" alt="Momento App" width="120" align="center" />
 “Capture and reflect on meaningful moments with a mindful photo-journaling mobile app built using React Native, Expo, and TypeScript.”
 
