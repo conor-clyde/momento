@@ -5,7 +5,9 @@
 
 # Momento
 <img src="assets/images/icon.png" alt="Momento App" width="120" align="center" />
-“Capture and reflect on meaningful moments with a mindful photo-journaling mobile app built using React Native, Expo, and TypeScript.”
+Momento is a mindfulness-focused mobile application that helps users capture, reflect on, and build awareness of meaningful everyday moments through photo journaling and mood tracking.
+
+Built with React Native and Expo, this project demonstrates production-quality mobile development, thoughtful UX design, and clean, maintainable TypeScript architecture.
 
 ---
 
@@ -25,11 +27,11 @@
 ## ✨ Features
 
 - Capture moments using the device camera
-- Attach moods and reflective notes
-- Moment gallery, mood tracking, and statistics
-- Clean and intuitive UI design
+- Attach moods and reflective notes to each moment
+- Browse moments in a gallery view
+- Mood trends and basic statistics
 - Achievements and streaks to encourage mindful habits
-  
+-	Clean, intuitive, mobile-first UI
 
 ## 📱 App Screenshots
 
@@ -76,7 +78,7 @@ cd momento
 npm install
 ```
 
-3. **Install Expo Go on your device**
+3. **Install Expo Go on your mobile device**
 - **iOS**: Download from [App Store](https://apps.apple.com/app/expo-go/id982107779)
 - **Android**: Download from [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
@@ -86,7 +88,7 @@ npm start
 ```
 
 5. **Run on your device**
-- After the server starts, scan the QR code with Expo Go on your phone
+-	Scan the QR code with Expo Go once the server starts
 
 ## 📂 Project Structure
 
@@ -107,27 +109,35 @@ src/
 └── utils/               # Utility functions
 ```
 
-## 📚 What I Learned
+## Technical Highlights
+-	Modular, reusable component architecture
+-	File-based routing using Expo Router
+- Centralized global state with React Context
+-	Async data persistence with AsyncStorage
+-	Clean separation of UI, logic, and state
+-	Prepared builds using EAS
 
-**Technical:**
-- Built a multi-screen, cross-platform mobile app with React Native and Expo
-- Managed navigation, global state, and device features like the camera
-- Tackled challenges in asynchronous workflows and performance optimization
+## What I learned
+**Technical**
+- Built a multi-screen, cross-platform mobile app from the ground up
+- Integrated native device features such as the camera
+- Managed async workflows and local persistence
+- Structured a scalable React Native codebase using TypeScript
 
-**UX & Design:**
-- Designed a clean, intuitive, and responsive UI
-- Designed reusable TypeScript components and optimized async workflows for performance.
-- Balanced technical functionality with a thoughtful user experience
+**UX & Design**
+- Designed a clean, intuitive, and mobile-friendly UI
+- Balanced feature complexity with simplicity and usability
+- Focused on habit-building UX patterns (streaks, achievements)
 
 ---
 
 ## 🔮 Future Improvements
-- Add images from phone gallery
-- Haptic feedback & touch gestures
-- User authentication & moment backup
+- Import images from the device gallery
+- Haptic feedback and gesture interactions
+- User authentication & cloud backup
 - Social sharing & friending
-- Enhanced accessibility & animations
-- Advanced statistics and achievements
+- Accessibility improvements and animations
+- Advanced statistics and insights
 
 ---
 
