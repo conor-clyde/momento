@@ -6,8 +6,7 @@
 # 📸 Momento
 
 <img src="assets/images/icon.png" alt="Momento App" width="120" align="center" />
-
-A **mindfulness-focused mobile app** that helps users **capture and reflect on meaningful moments** through **photo journaling** and **mood tracking**. Built with **React Native and Expo**, demonstrating **full-stack mobile development** and thoughtful **UX design**.
+“Capture and reflect on meaningful moments with a mindful photo-journaling mobile app built using React Native, Expo, and TypeScript.”
 
 ---
 
@@ -31,6 +30,7 @@ A **mindfulness-focused mobile app** that helps users **capture and reflect on m
 - Moment gallery, mood tracking, and statistics
 - Clean and intuitive UI design
 - Achievements and streaks to encourage mindful habits
+  
 
 ## 📱 App Screenshots
 
@@ -117,7 +117,7 @@ src/
 
 **UX & Design:**
 - Designed a clean, intuitive, and responsive UI
-- Created a scalable project structure with reusable TypeScript components
+- Designed reusable TypeScript components and optimized async workflows for performance.
 - Balanced technical functionality with a thoughtful user experience
 
 ---
