@@ -2,6 +2,7 @@
   "expo": {
     "name": "Momento",
     "slug": "momento",
+    "scheme": "momento",
     "icon": "./assets/images/icon.png",
     "description": "A beautiful mobile app for capturing and reflecting on meaningful moments. Take photos with your camera, add moods and notes, track daily streaks, and build mindful habits.",
     "splash": {
@@ -11,8 +12,7 @@
     },
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
