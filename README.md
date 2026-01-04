@@ -18,8 +18,8 @@ Built with React Native and Expo, this project demonstrates production-quality m
 - [Tech Stack](#-tech-stack)
 - [Quick Start](#quick-start-using-expo-go)
 - [Project Structure](#-project-structure)
-- [What I Learned](#-what-i-learned)
-- [Future Improvements](#-future-improvements)
+- [What I Learned](#what-i-learned)
+- [Future Improvements](#future-improvements)
 - [License](#license)
 - [Author](#author)
 
@@ -132,7 +132,7 @@ src/
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 - Import images from the device gallery
 - Haptic feedback and gesture interactions
 - User authentication & cloud backup
