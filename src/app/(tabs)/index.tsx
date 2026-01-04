@@ -29,7 +29,6 @@ function HomeHeader({ onAchievementsPress }: { onAchievementsPress: () => void }
           <Icon name="trophy-outline" size={20} color={colors.primary.main} />
         </Pressable>
       </View>
-      <Text style={styles.subtitle}>A place for your little moments</Text>
     </View>
   );
 }
@@ -181,7 +180,7 @@ export default function HomeScreen() {
       <View style={styles.floatingButtonContainer}>
         <Button
           variant="primary"
-          text="Capture a moment"
+          text="Capture Moment"
           icon="camera"
           onPress={() => router.push("/camera")}
         />
